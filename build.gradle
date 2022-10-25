@@ -1,0 +1,36 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.kie', name: 'kie-ci', version: '8.29.0.Final'
+    implementation group: 'org.drools', name: 'drools-compiler', version: '8.29.0.Final'
+    implementation group: 'org.drools', name: 'drools-core', version: '8.29.0.Final'
+    implementation group: 'org.drools', name: 'drools-decisiontables', version: '8.29.0.Final'
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.7.4'
+    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.7.4'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
